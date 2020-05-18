@@ -1,0 +1,78 @@
+[17-May-2020 23:16:48 America/Boise] PHP Fatal error:  Out of memory (allocated 792731648) (tried to allocate 33554440 bytes) in phar:///opt/cpanel/composer/bin/composer/src/Composer/DependencyResolver/RuleSet.php on line 83
+[17-May-2020 23:25:29 America/Boise] PHP Fatal error:  Out of memory (allocated 792731648) (tried to allocate 33554440 bytes) in phar:///opt/cpanel/composer/bin/composer/src/Composer/DependencyResolver/RuleSet.php on line 83
+[17-May-2020 23:28:48 America/Boise] PHP Fatal error:  Out of memory (allocated 792731648) (tried to allocate 33554440 bytes) in phar:///opt/cpanel/composer/bin/composer/src/Composer/DependencyResolver/RuleSet.php on line 83
+[17-May-2020 23:30:37 America/Boise] PHP Fatal error:  Out of memory (allocated 792731648) (tried to allocate 33554440 bytes) in phar:///opt/cpanel/composer/bin/composer/src/Composer/DependencyResolver/RuleSet.php on line 83
+[17-May-2020 23:32:15 America/Boise] PHP Fatal error:  Out of memory (allocated 792731648) (tried to allocate 33554440 bytes) in phar:///opt/cpanel/composer/bin/composer/src/Composer/DependencyResolver/RuleSet.php on line 83
+[17-May-2020 23:33:45 America/Boise] PHP Fatal error:  Out of memory (allocated 792731648) (tried to allocate 33554440 bytes) in phar:///opt/cpanel/composer/bin/composer/src/Composer/DependencyResolver/RuleSet.php on line 83
+[17-May-2020 23:38:38 America/Boise] PHP Fatal error:  Uncaught Error: Class 'Symfony\Flex\Command\RequireCommand' not found in /home2/inveswp3/public_html/cqrs/xxx/vendor/symfony/flex/src/Flex.php:242
+Stack trace:
+#0 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(236): Symfony\Flex\Flex->activate(Object(Composer\Composer), Object(Composer\IO\ConsoleIO))
+#1 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(205): Composer\Plugin\PluginManager->addPlugin(Object(Symfony\Flex\Flex))
+#2 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(261): Composer\Plugin\PluginManager->registerPackage(Object(Composer\Package\CompletePackage))
+#3 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(76): Composer\Plugin\PluginManager->loadRepository(Object(Composer\Repository\InstalledFilesystemRepository))
+#4 phar:///opt/cpanel/composer/bin/composer/src/Composer/Factory.php(384): Composer\Plugin\PluginManager->loadInstalledPlugins()
+#5 phar:///opt/cpanel/composer/bin/c in /home2/inveswp3/public_html/cqrs/xxx/vendor/symfony/flex/src/Flex.php on line 242
+[17-May-2020 23:41:09 America/Boise] PHP Fatal error:  Uncaught Error: Class 'Symfony\Flex\Command\RequireCommand' not found in /home2/inveswp3/public_html/cqrs/xxx/vendor/symfony/flex/src/Flex.php:242
+Stack trace:
+#0 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(236): Symfony\Flex\Flex->activate(Object(Composer\Composer), Object(Composer\IO\ConsoleIO))
+#1 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(205): Composer\Plugin\PluginManager->addPlugin(Object(Symfony\Flex\Flex))
+#2 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(261): Composer\Plugin\PluginManager->registerPackage(Object(Composer\Package\CompletePackage))
+#3 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(76): Composer\Plugin\PluginManager->loadRepository(Object(Composer\Repository\InstalledFilesystemRepository))
+#4 phar:///opt/cpanel/composer/bin/composer/src/Composer/Factory.php(384): Composer\Plugin\PluginManager->loadInstalledPlugins()
+#5 phar:///opt/cpanel/composer/bin/c in /home2/inveswp3/public_html/cqrs/xxx/vendor/symfony/flex/src/Flex.php on line 242
+[17-May-2020 23:50:18 America/Boise] PHP Fatal error:  Uncaught TypeError: Return value of PackageVersions\Installer::activate() must be an instance of PackageVersions\void, none returned in /home2/inveswp3/public_html/cqrs/xxx/vendor/ocramius/package-versions/src/PackageVersions/Installer.php:89
+Stack trace:
+#0 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(236): PackageVersions\Installer->activate(Object(Composer\Composer), Object(Composer\IO\ConsoleIO))
+#1 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(205): Composer\Plugin\PluginManager->addPlugin(Object(PackageVersions\Installer))
+#2 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(261): Composer\Plugin\PluginManager->registerPackage(Object(Composer\Package\CompletePackage))
+#3 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(76): Composer\Plugin\PluginManager->loadRepository(Object(Composer\Repository\InstalledFilesystemRepository))
+#4 phar:///opt/cpanel/composer/bin/composer/src/Compo in /home2/inveswp3/public_html/cqrs/xxx/vendor/ocramius/package-versions/src/PackageVersions/Installer.php on line 89
+[18-May-2020 00:45:13 America/Boise] PHP Fatal error:  Uncaught TypeError: Return value of PackageVersions\Installer::activate() must be an instance of PackageVersions\void, none returned in /home2/inveswp3/public_html/cqrs/xxx/vendor/ocramius/package-versions/src/PackageVersions/Installer.php:89
+Stack trace:
+#0 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(236): PackageVersions\Installer->activate(Object(Composer\Composer), Object(Composer\IO\ConsoleIO))
+#1 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(205): Composer\Plugin\PluginManager->addPlugin(Object(PackageVersions\Installer))
+#2 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(261): Composer\Plugin\PluginManager->registerPackage(Object(Composer\Package\CompletePackage))
+#3 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(76): Composer\Plugin\PluginManager->loadRepository(Object(Composer\Repository\InstalledFilesystemRepository))
+#4 phar:///opt/cpanel/composer/bin/composer/src/Compo in /home2/inveswp3/public_html/cqrs/xxx/vendor/ocramius/package-versions/src/PackageVersions/Installer.php on line 89
+[18-May-2020 00:47:00 America/Boise] PHP Fatal error:  Uncaught TypeError: Return value of PackageVersions\Installer::activate() must be an instance of PackageVersions\void, none returned in /home2/inveswp3/public_html/cqrs/xxx/vendor/ocramius/package-versions/src/PackageVersions/Installer.php:89
+Stack trace:
+#0 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(236): PackageVersions\Installer->activate(Object(Composer\Composer), Object(Composer\IO\ConsoleIO))
+#1 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(205): Composer\Plugin\PluginManager->addPlugin(Object(PackageVersions\Installer))
+#2 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(261): Composer\Plugin\PluginManager->registerPackage(Object(Composer\Package\CompletePackage))
+#3 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(76): Composer\Plugin\PluginManager->loadRepository(Object(Composer\Repository\InstalledFilesystemRepository))
+#4 phar:///opt/cpanel/composer/bin/composer/src/Compo in /home2/inveswp3/public_html/cqrs/xxx/vendor/ocramius/package-versions/src/PackageVersions/Installer.php on line 89
+[18-May-2020 00:47:32 America/Boise] PHP Fatal error:  Uncaught TypeError: Return value of PackageVersions\Installer::activate() must be an instance of PackageVersions\void, none returned in /home2/inveswp3/public_html/cqrs/xxx/vendor/ocramius/package-versions/src/PackageVersions/Installer.php:89
+Stack trace:
+#0 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(236): PackageVersions\Installer->activate(Object(Composer\Composer), Object(Composer\IO\ConsoleIO))
+#1 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(205): Composer\Plugin\PluginManager->addPlugin(Object(PackageVersions\Installer))
+#2 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(261): Composer\Plugin\PluginManager->registerPackage(Object(Composer\Package\CompletePackage))
+#3 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(76): Composer\Plugin\PluginManager->loadRepository(Object(Composer\Repository\InstalledFilesystemRepository))
+#4 phar:///opt/cpanel/composer/bin/composer/src/Compo in /home2/inveswp3/public_html/cqrs/xxx/vendor/ocramius/package-versions/src/PackageVersions/Installer.php on line 89
+[18-May-2020 00:47:46 America/Boise] PHP Fatal error:  Uncaught TypeError: Return value of PackageVersions\Installer::activate() must be an instance of PackageVersions\void, none returned in /home2/inveswp3/public_html/cqrs/xxx/vendor/ocramius/package-versions/src/PackageVersions/Installer.php:89
+Stack trace:
+#0 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(236): PackageVersions\Installer->activate(Object(Composer\Composer), Object(Composer\IO\ConsoleIO))
+#1 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(205): Composer\Plugin\PluginManager->addPlugin(Object(PackageVersions\Installer))
+#2 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(261): Composer\Plugin\PluginManager->registerPackage(Object(Composer\Package\CompletePackage))
+#3 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(76): Composer\Plugin\PluginManager->loadRepository(Object(Composer\Repository\InstalledFilesystemRepository))
+#4 phar:///opt/cpanel/composer/bin/composer/src/Compo in /home2/inveswp3/public_html/cqrs/xxx/vendor/ocramius/package-versions/src/PackageVersions/Installer.php on line 89
+[18-May-2020 00:49:16 America/Boise] PHP Fatal error:  Uncaught TypeError: Return value of PackageVersions\Installer::activate() must be an instance of PackageVersions\void, none returned in /home2/inveswp3/public_html/cqrs/xxx/vendor/ocramius/package-versions/src/PackageVersions/Installer.php:89
+Stack trace:
+#0 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(236): PackageVersions\Installer->activate(Object(Composer\Composer), Object(Composer\IO\ConsoleIO))
+#1 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(205): Composer\Plugin\PluginManager->addPlugin(Object(PackageVersions\Installer))
+#2 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(261): Composer\Plugin\PluginManager->registerPackage(Object(Composer\Package\CompletePackage))
+#3 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(76): Composer\Plugin\PluginManager->loadRepository(Object(Composer\Repository\InstalledFilesystemRepository))
+#4 phar:///opt/cpanel/composer/bin/composer/src/Compo in /home2/inveswp3/public_html/cqrs/xxx/vendor/ocramius/package-versions/src/PackageVersions/Installer.php on line 89
+[18-May-2020 00:51:33 America/Boise] PHP Fatal error:  Uncaught TypeError: Return value of PackageVersions\Installer::activate() must be an instance of PackageVersions\void, none returned in /home2/inveswp3/public_html/cqrs/xxx/vendor/ocramius/package-versions/src/PackageVersions/Installer.php:89
+Stack trace:
+#0 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(236): PackageVersions\Installer->activate(Object(Composer\Composer), Object(Composer\IO\ConsoleIO))
+#1 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(205): Composer\Plugin\PluginManager->addPlugin(Object(PackageVersions\Installer))
+#2 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(261): Composer\Plugin\PluginManager->registerPackage(Object(Composer\Package\CompletePackage))
+#3 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(76): Composer\Plugin\PluginManager->loadRepository(Object(Composer\Repository\InstalledFilesystemRepository))
+#4 phar:///opt/cpanel/composer/bin/composer/src/Compo in /home2/inveswp3/public_html/cqrs/xxx/vendor/ocramius/package-versions/src/PackageVersions/Installer.php on line 89
+[18-May-2020 00:55:11 America/Boise] PHP Fatal error:  Uncaught TypeError: Return value of PackageVersions\Installer::activate() must be an instance of PackageVersions\void, none returned in /home2/inveswp3/public_html/cqrs/xxx/vendor/ocramius/package-versions/src/PackageVersions/Installer.php:89
+Stack trace:
+#0 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(236): PackageVersions\Installer->activate(Object(Composer\Composer), Object(Composer\IO\ConsoleIO))
+#1 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(205): Composer\Plugin\PluginManager->addPlugin(Object(PackageVersions\Installer))
+#2 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(261): Composer\Plugin\PluginManager->registerPackage(Object(Composer\Package\CompletePackage))
+#3 phar:///opt/cpanel/composer/bin/composer/src/Composer/Plugin/PluginManager.php(76): Composer\Plugin\PluginManager->loadRepository(Object(Composer\Repository\InstalledFilesystemRepository))
+#4 phar:///opt/cpanel/composer/bin/composer/src/Compo in /home2/inveswp3/public_html/cqrs/xxx/vendor/ocramius/package-versions/src/PackageVersions/Installer.php on line 89

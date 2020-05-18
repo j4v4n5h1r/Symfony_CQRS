@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<p>post: {{ post.name }}</p>
+	<p>category: {{ categoryName }}</p>
+
+	<h3>comments: </h3>
+	<hr>
+	<hr>
+	{% for comment in comments %}
+	<p>{{ comment.comment }}</p>
+	<hr>
+    {% endfor %}
+    <hr>
+
+	<p>write comment</p>
+	<form>
+		<form action="comment" method="get">
+			<textarea name="comment"></textarea>
+			<input type="hidden" name="postid" value="{{ post.id }}">
+			<button type="submit">Comment</button>
+		</form>
+	</form>
+</body>
+</html>

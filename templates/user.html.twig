@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h3>login</h3>
+	<form action="login" method="get">
+		<input type="email" name="email">
+		<input type="password" name="pass">
+		<button type="submit">Login</button>
+	</form>
+	
+	<h3>users: </h3>
+	<hr>
+	<hr>
+	{% for user in users %}
+	<p>{{ user.email }}</p>
+	<hr>
+    {% endfor %}
+    <hr>
+
+    <h3>register</h3>
+	<form action="register" method="get">
+		<input type="email" name="email">
+		<input type="password" name="pass">
+		<button type="submit">Register</button>
+	</form>
+</body>
+</html>
