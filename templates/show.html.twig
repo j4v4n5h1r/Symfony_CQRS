@@ -1,28 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-	<title></title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Symfony</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="https://blackrockdigital.github.io/startbootstrap-bare/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
+
 <body>
-	<p>post: {{ post.name }}</p>
-	<p>category: {{ categoryName }}</p>
 
-	<h3>comments: </h3>
-	<hr>
-	<hr>
-	{% for comment in comments %}
-	<p>{{ comment.comment }}</p>
-	<hr>
-    {% endfor %}
-    <hr>
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+		<div class="container">
+			<a class="navbar-brand" href="#">Symfony</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="/">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/index.php/user">Users / Login</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/index.php/logout">Logout</a>
+					</li>
+					<li class="nav-item">
+						<p>{{ email }}</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
-	<p>write comment</p>
-	<form>
-		<form action="comment" method="get">
-			<textarea name="comment"></textarea>
-			<input type="hidden" name="postid" value="{{ post.id }}">
-			<button type="submit">Comment</button>
-		</form>
-	</form>
+	<!-- Page Content -->
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6">
+				<h3>write comment</h3>
+				<form action="/index.php/comment" method="get">
+					<div class="form-group">
+						<label for="comment"></label>
+						<textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+					</div>
+					<input type="hidden" name="postid" value="{{ post.id }}">
+					<button type="submit" class="btn btn-primary">Comment</button>
+				</form>
+			</div>
+			<div class="col-lg-6">
+				<p>post: {{ post.name }}</p>
+				<p>category: {{ categoryName }}</p>
+
+				<h3>comments: </h3>
+				<hr>
+				<hr>
+				{% for comment in comments %}
+				<p>post #{{ comment.post.id }} - {{ comment.comment }}</p>
+				<hr>
+				{% endfor %}
+				<hr>
+			</div>
+		</div>
+	</div>
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="https://blackrockdigital.github.io/startbootstrap-bare/vendor/jquery/jquery.slim.min.js"></script>
+	<script src="https://blackrockdigital.github.io/startbootstrap-bare/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 </body>
+
 </html>

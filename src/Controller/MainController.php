@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Message\PostCreate;
@@ -17,6 +18,14 @@ use App\Entity\Comment;
 use App\Entity\Category;
 
 class MainController extends AbstractController {
+
+    private $session;
+
+    public function __construct(SessionInterface $session)
+    {
+        $this->session = $session;
+    }
+
     /**
      * @Route("/")
      */
@@ -26,8 +35,10 @@ class MainController extends AbstractController {
         ->getRepository(Post::class)
         ->findAll();
 
+        $email = $this->session->get('email');
+
         return $this->render('index.html.twig', [
-            'posts' => $posts,
+            'posts' => $posts, 'email' => $email
         ]);
     }
 
@@ -50,6 +61,8 @@ class MainController extends AbstractController {
         ->getRepository(Post::class)
         ->find($id);
 
+        $email = $this->session->get('email');
+
         if (!$post) {
             throw $this->createNotFoundException(
                 'No post found for id '.$id
@@ -63,7 +76,7 @@ class MainController extends AbstractController {
         ->findAll();
 
         // return new Response('Check out this great post: '.$post->getName());
-        return $this->render('show.html.twig', ['post' => $post, 'categoryName' => $categoryName, 'comments' => $comments]);
+        return $this->render('show.html.twig', ['post' => $post, 'categoryName' => $categoryName, 'comments' => $comments, 'email' => $email]);
     }
 
     /**
@@ -91,7 +104,9 @@ class MainController extends AbstractController {
 
         // return $this->render('show.html.twig', ['post' => $post, 'comments' => $comments]);
 
-        return new Response('Saved new comment with id '.$comment->getId());
+        // return new Response('Saved new comment with id '.$comment->getId());
+
+        return $this->redirect('post/'.$post->getId());
     }
 
     /**
@@ -103,8 +118,10 @@ class MainController extends AbstractController {
         ->getRepository(User::class)
         ->findAll();
 
+        $email = $this->session->get('email');
+
         return $this->render('user.html.twig', [
-            'users' => $users,
+            'users' => $users, 'email' => $email
         ]);
     }
 
@@ -119,15 +136,22 @@ class MainController extends AbstractController {
         ->getRepository(User::class)
         ->findOneBy(['email' => $request->query->get("email")]);
 
-        $xx = "Error in logging in!";
+        $posts = $this->getDoctrine()
+        ->getRepository(Post::class)
+        ->findAll();
+
+        $email = "";
 
         if ($user) {
             if ($request->query->get("pass") == $user->getPass()) {
-                $xx = "Logged in!";
+                $email = $user->getEmail();
+                $this->session->set('email', $user->getEmail());
             }
         }
 
-        return new Response($xx);
+        return $this->render('index.html.twig', [
+            'posts' => $posts, 'email' => $email
+        ]);
     }
 
     /**
@@ -138,6 +162,26 @@ class MainController extends AbstractController {
         $messageBus->dispatch(new Register($request));
 
         return new Response('Saved new user');
+    }
+
+    /**
+     * @Route("/logout", methods="GET")
+     */
+    public function logout(Request $request): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $posts = $this->getDoctrine()
+        ->getRepository(Post::class)
+        ->findAll();
+
+        $this->session->set('email', "");
+
+        $email = "";
+
+        return $this->render('index.html.twig', [
+            'posts' => $posts, 'email' => $email
+        ]);
     }
 
 }
