@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="c72bcc8e-9fc6-41c6-a793-1a84c20d0c0b" name="176.223.133.218" url="http://176.223.133.218/">
+        <fileTransfer rootFolder="/var/www/html/Symfony_CQRS" accessType="SFTP" host="176.223.133.218" port="22" sshConfigId="ad02cc59-55fe-4c47-8b5d-f3ebb03ec5f7" sshConfig="root@176.223.133.218:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

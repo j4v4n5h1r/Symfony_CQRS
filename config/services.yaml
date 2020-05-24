@@ -25,3 +25,29 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+#    Doctrine\Common\Persistence\ObjectManager: '@doctrine.orm.default_entity_manager'
+
+#    doctrine_application_transaction:
+#        class: App\Adapter\Core\Transaction
+#        arguments: ["@doctrine.orm.entity_manager"]
+#        public: true
+#        application_transaction:
+#            alias: doctrine_application_transaction
+#            public: true
+#        tenants:
+#            class: App\Adapter\Tenants\Tenants
+#            arguments: ["@doctrine.orm.entity_manager"]
+#            public: true
+#        users:
+#            class: App\Adapter\Users\Users
+#            arguments: ["@doctrine.orm.entity_manager"]
+#            public: true
+#        use_case.create_user:
+#            class: App\Entity\Users\UseCase\CreateUser
+#            arguments: ["@users", "@application_transaction"]
+#            public: true
+#        use_case.create_tenant:
+#            class: App\Entity\Tenants\UseCase\CreateTenant
+#            arguments: ["@tenants", "@users", "@email_registration_send_adapter", "@application_transaction"]
+#            public: true

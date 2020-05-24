@@ -20,9 +20,9 @@ class Post
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="posts")
+     * @ORM\ManyToOne(targetEntity=Categories::class, inversedBy="posts")
      */
-    private $category;
+//    private $category;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -44,17 +44,17 @@ class Post
         return $this->id;
     }
 
-    public function getCategory(): ?Category
-    {
-        return $this->category;
-    }
-
-    public function setCategory(?Category $category): self
-    {
-        $this->category = $category;
-
-        return $this;
-    }
+//    public function getCategory(): ?Categories
+//    {
+//        return $this->category;
+//    }
+//
+//    public function setCategory(?Categories $category): self
+//    {
+//        $this->category = $category;
+//
+//        return $this;
+//    }
 
     public function getName(): ?string
     {
@@ -80,7 +80,7 @@ class Post
     {
         if (!$this->comment->contains($comment)) {
             $this->comment[] = $comment;
-            $comment->setPost($this);
+//            $comment->setPost($this);
         }
 
         return $this;
@@ -91,9 +91,9 @@ class Post
         if ($this->comment->contains($comment)) {
             $this->comment->removeElement($comment);
             // set the owning side to null (unless already changed)
-            if ($comment->getPost() === $this) {
-                $comment->setPost(null);
-            }
+//            if ($comment->getPost() === $this) {
+//                $comment->setPost(null);
+//            }
         }
 
         return $this;

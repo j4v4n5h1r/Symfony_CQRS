@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="categories_table" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>Id Category</th>
+                            <th>Name</th>
+                            <th>Code</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for category in categories %}
+                            <tr>
+                                <td>{{ category.id}}</td>
+                                <td>{{ category.name }}</td>
+                                <td>{{ category.code }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

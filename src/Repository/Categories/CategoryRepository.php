@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repository\Categories;
 
 use App\Entity\Category;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -20,7 +20,7 @@ class CategoryRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Category[] Returns an array of Category objects
+    //  * @return Categories[] Returns an array of Categories objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class CategoryRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Category
+    public function findOneBySomeField($value): ?Categories
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.exampleField = :val')

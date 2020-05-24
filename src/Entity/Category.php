@@ -5,10 +5,13 @@ namespace App\Entity;
 use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use App\Entity\Tenants\Tenant;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=CategoryRepository::class)
+ * @UniqueEntity("code")
  */
 class Category
 {
@@ -20,65 +23,67 @@ class Category
     private $id;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Tenants\Tenant")
+     * @ORM\JoinColumn(name="tenant_id", referencedColumnName="id")
+     */
+    private $tenant;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Post::class, mappedBy="category")
+     * @ORM\Column(type="string", length=255)
      */
-    private $posts;
+    private $code;
 
-    public function __construct()
+    public function __construct(
+       Tenant $tenant,
+       string $name,
+       string $code
+   )
     {
-        $this->posts = new ArrayCollection();
-    }
+       $this->tenant = $tenant;
+       $this->name = $name;
+       $this->code = $code;
+   }
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+   public function getId(): ?int
+   {
+       return $this->id;
+   }
 
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
+   public function getTenant(): Tenant
+   {
+       return $this->tenant;
+   }
 
-    public function setName(string $name): self
-    {
-        $this->name = $name;
+   public function setTenant(Tenant $tenant): self
+   {
+       $this->tenant = $tenant;
+       return $this;
+   }
 
-        return $this;
-    }
+   public function getName(): ?string
+   {
+       return $this->name;
+   }
 
-    /**
-     * @return Collection|Post[]
-     */
-    public function getPosts(): Collection
-    {
-        return $this->posts;
-    }
+   public function setName(string $name): self
+   {
+       $this->name = $name;
+       return $this;
+   }
 
-    public function addPost(Post $post): self
-    {
-        if (!$this->posts->contains($post)) {
-            $this->posts[] = $post;
-            $post->setCategory($this);
-        }
-
-        return $this;
-    }
-
-    public function removePost(Post $post): self
-    {
-        if ($this->posts->contains($post)) {
-            $this->posts->removeElement($post);
-            // set the owning side to null (unless already changed)
-            if ($post->getCategory() === $this) {
-                $post->setCategory(null);
-            }
-        }
-
-        return $this;
-    }
+   public function getCode(): string
+   {
+       return $this->code;
+   }
+   
+   public function setCode(string $code): self
+   {
+       $this->code = $code;
+       return $this;
+   }
 }

@@ -13,11 +13,13 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Message\PostCreate;
 use App\Message\Register;
 use App\Entity\Post;
-use App\Entity\User;
+use App\Entity\Users\User;
 use App\Entity\Comment;
-use App\Entity\Category;
 
-class MainController extends AbstractController {
+//use App\Entity\Categories;
+
+class MainController extends AbstractController
+{
 
     private $session;
 
@@ -29,11 +31,11 @@ class MainController extends AbstractController {
     /**
      * @Route("/")
      */
-    public function index() 
+    public function index()
     {
         $posts = $this->getDoctrine()
-        ->getRepository(Post::class)
-        ->findAll();
+            ->getRepository(Post::class)
+            ->findAll();
 
         $email = $this->session->get('email');
 
@@ -58,25 +60,25 @@ class MainController extends AbstractController {
     public function show($id)
     {
         $post = $this->getDoctrine()
-        ->getRepository(Post::class)
-        ->find($id);
+            ->getRepository(Post::class)
+            ->find($id);
 
         $email = $this->session->get('email');
 
         if (!$post) {
             throw $this->createNotFoundException(
-                'No post found for id '.$id
+                'No post found for id ' . $id
             );
         }
 
-        $categoryName = $post->getCategory()->getName();
+//        $categoryName = $post->getCategory()->getName();
 
         $comments = $this->getDoctrine()
-        ->getRepository(Comment::class)
-        ->findAll();
+            ->getRepository(Comment::class)
+            ->findAll();
 
         // return new Response('Check out this great post: '.$post->getName());
-        return $this->render('show.html.twig', ['post' => $post, 'categoryName' => $categoryName, 'comments' => $comments, 'email' => $email]);
+        return $this->render('show.html.twig', ['post' => $post, 'comments' => $comments, 'email' => $email]);
     }
 
     /**
@@ -87,8 +89,8 @@ class MainController extends AbstractController {
         $entityManager = $this->getDoctrine()->getManager();
 
         $post = $this->getDoctrine()
-        ->getRepository(Post::class)
-        ->find($request->query->get("postid"));
+            ->getRepository(Post::class)
+            ->find($request->query->get("postid"));
 
         $comment = new Comment();
         $comment->setComment($request->query->get("comment"));
@@ -99,24 +101,24 @@ class MainController extends AbstractController {
         $entityManager->flush();
 
         $comments = $this->getDoctrine()
-        ->getRepository(Comment::class)
-        ->findAll();
+            ->getRepository(Comment::class)
+            ->findAll();
 
         // return $this->render('show.html.twig', ['post' => $post, 'comments' => $comments]);
 
         // return new Response('Saved new comment with id '.$comment->getId());
 
-        return $this->redirect('post/'.$post->getId());
+        return $this->redirect('post/' . $post->getId());
     }
 
     /**
      * @Route("/user")
      */
-    public function userAll() 
+    public function userAll()
     {
         $users = $this->getDoctrine()
-        ->getRepository(User::class)
-        ->findAll();
+            ->getRepository(User::class)
+            ->findAll();
 
         $email = $this->session->get('email');
 
@@ -133,12 +135,12 @@ class MainController extends AbstractController {
         $entityManager = $this->getDoctrine()->getManager();
 
         $user = $this->getDoctrine()
-        ->getRepository(User::class)
-        ->findOneBy(['email' => $request->query->get("email")]);
+            ->getRepository(User::class)
+            ->findOneBy(['email' => $request->query->get("email")]);
 
         $posts = $this->getDoctrine()
-        ->getRepository(Post::class)
-        ->findAll();
+            ->getRepository(Post::class)
+            ->findAll();
 
         $email = "";
 
@@ -172,8 +174,8 @@ class MainController extends AbstractController {
         $entityManager = $this->getDoctrine()->getManager();
 
         $posts = $this->getDoctrine()
-        ->getRepository(Post::class)
-        ->findAll();
+            ->getRepository(Post::class)
+            ->findAll();
 
         $this->session->set('email', "");
 
