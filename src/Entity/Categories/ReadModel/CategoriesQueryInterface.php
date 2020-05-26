@@ -9,11 +9,11 @@ interface CategoriesQueryInterface
     /**
      * @return Categories[]
      */
-    public function getAll(string $tenant): array;
+    public function getAll(string $post): array;
 
-    public function getById(string $tenant, string $id): Categories;
+    public function getById(string $post, string $id): Categories;
 
-    public function getByAbbreviationCode(string $tenant, string $code): Categories;
+    public function getByAbbreviationCode(string $post, string $code): Categories;
 
-    public function generateAbbreviationCode(string $tenant, string $nameCategory): array;
+    public function generateAbbreviationCode(string $post, string $nameCategory): array;
 }

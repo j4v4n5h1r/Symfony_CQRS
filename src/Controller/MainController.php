@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -63,13 +64,17 @@ class MainController extends AbstractController
             ->getRepository(Post::class)
             ->find($id);
 
+        $categories = $this->getDoctrine()
+            ->getRepository(Category::class)
+            ->findBy(['post' => $post]);
+
         $email = $this->session->get('email');
 
-        if (!$post) {
-            throw $this->createNotFoundException(
-                'No post found for id ' . $id
-            );
-        }
+//        if (!$post) {
+//            throw $this->createNotFoundException(
+//                'No post found for id ' . $id
+//            );
+//        }
 
 //        $categoryName = $post->getCategory()->getName();
 
@@ -78,7 +83,7 @@ class MainController extends AbstractController
             ->findAll();
 
         // return new Response('Check out this great post: '.$post->getName());
-        return $this->render('show.html.twig', ['post' => $post, 'comments' => $comments, 'email' => $email]);
+        return $this->render('show.html.twig', ['post' => $post, 'categories' => $categories, 'comments' => $comments, 'email' => $email]);
     }
 
     /**

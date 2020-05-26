@@ -19,15 +19,11 @@ class PostCreateHandler implements MessageHandlerInterface
     public function __invoke(PostCreate $postCreate)
     {
     	$request = $postCreate->getRequest();
-        $category = new Category();
-        $category->setName($request->query->get("category"));
 
         $post = new Post();
         $post->setName($request->query->get("name"));
 
-        $post->setCategory($category);
-
-        // $this->$entityManager = $this->getDoctrine()->getManager();
+        $category = new Category($post, $request->query->get("category"), "");
 
         $this->entityManager->persist($category);
         $this->entityManager->persist($post);

@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\CategoryRepository;
+use App\Repository\Categories\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use App\Entity\Tenants\Tenant;
+use App\Entity\Post;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -23,10 +23,10 @@ class Category
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Tenants\Tenant")
-     * @ORM\JoinColumn(name="tenant_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Post")
+     * @ORM\JoinColumn(name="post_id", referencedColumnName="id")
      */
-    private $tenant;
+    private $post;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -39,12 +39,12 @@ class Category
     private $code;
 
     public function __construct(
-       Tenant $tenant,
+       Post $post,
        string $name,
        string $code
    )
     {
-       $this->tenant = $tenant;
+       $this->post = $post;
        $this->name = $name;
        $this->code = $code;
    }
@@ -54,14 +54,14 @@ class Category
        return $this->id;
    }
 
-   public function getTenant(): Tenant
+   public function getPost(): Post
    {
-       return $this->tenant;
+       return $this->post;
    }
 
-   public function setTenant(Tenant $tenant): self
+   public function setPost(Post $post): self
    {
-       $this->tenant = $tenant;
+       $this->post = $post;
        return $this;
    }
 

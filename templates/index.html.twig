@@ -32,12 +32,14 @@
 					<li class="nav-item">
 						<a class="nav-link" href="user">Users / Login</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="logout">Logout</a>
-					</li>
-					<li class="nav-item">
-						<p>{{ email }}</p>
-					</li>
+					{% if email %}
+						<li class="nav-item">
+							<a class="nav-link" href="/index.php/logout">Logout</a>
+						</li>
+						<li class="nav-item">
+							<p>{{ email }}</p>
+						</li>
+					{% endif %}
 				</ul>
 			</div>
 		</div>
@@ -70,7 +72,9 @@
 				<hr>
 				{% for post in posts %}
 				<a href="post/{{ post.id }}">{{ post.name }}</a>
-				<hr>
+					/ <a href="{{ post.name }}/categories">open category</a>
+					/ <a href="{{ post.name }}/category/add">add category</a>
+					<hr>
 				{% endfor %}
 				<hr>
 			</div>

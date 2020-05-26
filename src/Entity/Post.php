@@ -20,8 +20,8 @@ class Post
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Categories::class, inversedBy="posts")
      */
+    // * @ORM\ManyToOne(targetEntity=Categories::class, inversedBy="posts")
 //    private $category;
 
     /**
@@ -42,6 +42,13 @@ class Post
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setId(string $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
 //    public function getCategory(): ?Categories

@@ -2,46 +2,48 @@
 
 namespace App\Controller;
 
-use App\Adapter\Category\Categories;
+use App\Adapter\Categories;
 use App\Adapter\Category\ReadModel\CategoriesQuery;
 use App\Adapter\Core\Transaction;
 use App\Entity\Category;
 use App\Entity\Categories\UseCase\CreateCategory;
-use App\Form\Categories\AddCategoryType;
-
-//use Doctrine\Common\Persistence\ObjectManager;
-//use Doctrine\ORM\EntityManagerInterface;
+use App\Entity\Post;
+use App\Form\Categories\AddCategoriesType;
+use App\Repository\Categories\CategoryRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\Entity\Categories\UseCase\CreateCategory\Responder as CreateCategoryResponder;
 
 //use App\Controller\Core\AdvancedAbstractController;
 
 /**
- * @Route("/{tenant}")
+ * @Route("/{post}")
  */
-
 //  * @Security("!is_anonymous() and user.getTenant().getName() == request.get('tenant')")
 class CategoriesController extends AbstractController implements CreateCategoryResponder
 {
-//    private $objectManager;
-//    private $entityManager;
-//
-//    public function __construct(ObjectManager $objectManager, EntityManagerInterface $entityManager)
-//    {
-//        $this->objectManager = $objectManager;
-//        $this->entityManager = $entityManager;
-//    }
+    private $entityManager;
+    private $session;
+
+    public function __construct(SessionInterface $session, EntityManagerInterface $entityManager)
+    {
+        $this->session = $session;
+        $this->entityManager = $entityManager;
+    }
 
     /**
      * @Route("/categories", name="categories_index", methods={"GET"})
      */
-    public function indexAction($tenant, CategoriesQuery $categoriesQuery)
+    public function indexAction($post, CategoriesQuery $categoriesQuery)
     {
+        $email = $this->session->get('email');
+
         return $this->render('categories/index.html.twig', [
-            'categories' => $categoriesQuery->getAll($tenant),
+            'categories' => $categoriesQuery->getAll($post), 'email' => $email
         ]);
     }
 
@@ -49,33 +51,44 @@ class CategoriesController extends AbstractController implements CreateCategoryR
      * @Route("/category/add", name="categories_add", methods={"GET"})
      * @Route("/category/create", name="categories_create", methods={"POST"})
      */
-    public function addAction($tenant, Request $request, CategoriesQuery $categoriesQuery)
+    public function addAction($post, Request $request, CategoriesQuery $categoriesQuery)
     {
         $form = $this->createForm(
-            AddCategoryType::class,
+            AddCategoriesType::class,
             [],
             [
                 'method' => 'POST',
-                'action' => $this->generateUrl('categories_create', ['tenant' => $tenant])
+                'action' => $this->generateUrl('categories_create', ['post' => $post])
             ]
         );
+
+        $postx = $this->getDoctrine()
+            ->getRepository(Post::class)
+            ->findOneBy(['name' => $post]);
+
+        $categoryRepository = $this->getDoctrine()
+            ->getRepository(Category::class);
+
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
             $command = new CreateCategory\Command(
-                $this->getUser()->getTenant(),
+                $postx,
                 $data['name'],
-                implode("", $categoriesQuery->generateAbbreviationCode($tenant, $data['name']))
+//                implode("", $categoriesQuery->generateAbbreviationCode($post, $data['name']))
+                ""
             );
             $command->setResponder($this);
-//            $createCategory = new CreateCategory(
-//                new Categories($this->objectManager),
-//                new Transaction($this->entityManager));
-//            $createCategory->execute($command);
-            return $this->redirectToRoute('categories_add', ['tenant' => $tenant]);
+            $createCategory = new CreateCategory(
+                new Categories($this->getDoctrine()->getManager(), $categoryRepository));
+            $createCategory->execute($command);
+            return $this->redirectToRoute('categories_add', ['post' => $post]);
         }
+
+        $email = $this->session->get('email');
+
         return $this->render('categories/add.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form->createView(), 'email' => $email
         ]);
     }
 

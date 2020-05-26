@@ -2,24 +2,24 @@
 
 namespace App\Entity\Categories\UseCase\CreateCategory;
 
-use App\Entity\Tenants\Tenant;
+use App\Entity\Post;
 use App\Entity\Categories\UseCase\CreateCategory\NullResponder;
 use App\Entity\Categories\UseCase\CreateCategory\Responder;
 
 class Command
 {
-    private $tenant;
+    private $post;
     private $name;
     private $code;
     private $responder;
 
     public function __construct(
-        Tenant $tenant,
+        Post $post,
         string $name,
         string $code
     )
     {
-        $this->tenant = $tenant;
+        $this->post = $post;
         $this->name = $name;
         $this->code = $code;
         $this->responder = new NullResponder();
@@ -36,9 +36,9 @@ class Command
         return $this->responder;
     }
 
-    public function getTenant(): Tenant
+    public function getPost(): Post
     {
-        return $this->tenant;
+        return $this->post;
     }
 
     public function getName(): string

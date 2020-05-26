@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-interface Categories
+interface CategoriesInterface
 {
     public function add(Category $category);
 
